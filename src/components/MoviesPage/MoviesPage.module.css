@@ -1,0 +1,85 @@
+.form {
+    margin-left: 30px;margin-top: 20px;    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 3px;
+    border: solid 1px #cac4c4;
+    overflow: hidden;
+}
+
+.button {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    background-color: #cac4c4;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/151/151773.png');
+    opacity: 0.8;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #ebe3e3;
+    opacity: 0.6;
+}
+
+.label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+.input {
+    display: inline-block;
+    width: 100%;
+    font: inherit;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+.input::placeholder {
+    font: inherit;
+    font-size: 18px;
+}
+
+.title {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover,
+.link:focus {
+    color: #7e7979;
+}

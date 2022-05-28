@@ -1,0 +1,22 @@
+.list {
+    display: flex;
+    padding: 30px;
+    border-bottom: 3px solid #cac4c4;
+}
+
+.link {
+    font-size: 30px;
+    text-decoration: none;
+    color: #7e7979;
+    margin-left: 20px;
+}
+
+.link:hover,
+.link:focus {
+    color: #dd6060;
+}
+
+.active {
+    composes: link;
+    color: #dd6060;
+}
