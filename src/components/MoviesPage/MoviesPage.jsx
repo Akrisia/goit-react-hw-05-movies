@@ -41,8 +41,8 @@ export default function MoviesPage({handleFilms}) {
     };
 
     useEffect(() => {
-        handleFilms({ films, loading });
-    }, [films, loading, handleFilms]);
+        handleFilms({ loading });
+    }, [loading, handleFilms]);
 
     return (
         <>

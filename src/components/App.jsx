@@ -9,10 +9,8 @@ import NotFound from './NotFound';
 
 export function App() {
   const [loading, setLoading] = useState(false);
-  const [films, setFilms] = useState([]);
 
-  const handleFilms = ({ films, loading }) => {
-    setFilms(films);
+  const handleFilms = ({ loading }) => {
     setLoading(loading);
   };
 

@@ -18,8 +18,8 @@ export default function HomePage({handleFilms}) {
     }, []);
     
     useEffect(() => {
-        handleFilms({ films, loading });
-    }, [films, loading, handleFilms]);
+        handleFilms({ loading });
+    }, [loading, handleFilms]);
 
     return (
         <>
