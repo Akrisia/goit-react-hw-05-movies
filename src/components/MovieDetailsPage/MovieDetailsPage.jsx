@@ -1,5 +1,5 @@
 import s from './MovieDetailsPage.module.css';
-import { Route, Routes, useParams, Link } from 'react-router-dom';
+import { Route, Routes, useParams, useLocation, Link } from 'react-router-dom';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { getFilmById } from 'services/GetFilms';
 import Loader from 'components/Loader';
@@ -9,6 +9,7 @@ const Reviews = lazy(() => import('../Reviews'));
 export default function MovieDetailsPage() {
     const [film, setFilm] = useState();
     const { filmId } = useParams();
+    const location = useLocation();
     const filmImageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
     useEffect(() => {
@@ -22,6 +23,7 @@ export default function MovieDetailsPage() {
         <>
             {film &&
                 <>
+                <Link to={location?.state?.from?.location ?? '/'} className={s.button}>{location?.state?.from?.label ?? 'Go Back'}</Link>
                     <div className={s.filmCard}>
                         <img src={`${filmImageBaseUrl}${film.poster_path}`} alt={film.original_title} className={s.image} />
                         <div className={s.filmInfo}>

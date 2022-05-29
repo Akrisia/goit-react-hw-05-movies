@@ -7,8 +7,8 @@ import { searchFilms } from 'services/GetFilms';
 export default function MoviesPage() {
     const [query, setQuery] = useState('');
     const [films, setFilms] = useState([]);
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleChange = event => {
         const { value } = event.currentTarget;
@@ -26,6 +26,7 @@ export default function MoviesPage() {
             pathname: location.pathname,
             search: `query=${query}`
         });
+
         searchFilms(query)
             .then(response => {
                 setFilms(films => response.data.results);
@@ -57,7 +58,7 @@ export default function MoviesPage() {
             {films && <ul className={s.list}>
                 {films.map(film => {
                     return <li className={s.item} key={film.id}>
-                        <Link to={`/movies/${film.id}`} className={s.link}>{film.original_title}</Link>
+                        <Link to={{ pathname: `/movies/${film.id}`, state: { from: location } }} className={s.link}>{film.original_title}</Link>
                     </li>
                 })}
             </ul>}

@@ -21,7 +21,7 @@ export default function Cast() {
             {cast &&
                 cast.map(({ id, profile_path, name, character }) => {
                     return <li className={s.item} key={id}>
-                        <img src={`${filmImageBaseUrl}/${profile_path}`} className={s.image}></img>
+                        <img src={`${filmImageBaseUrl}/${profile_path}`} alt={s.name} className={s.image}></img>
                         <h4 className={s.title}>{name}</h4>
                         <p className={s.text}>{character}</p>
                     </li>
