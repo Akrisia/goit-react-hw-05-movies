@@ -1,14 +1,12 @@
-import PropTypes from 'prop-types';
 import s from './MoviesPage.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { searchFilms } from 'services/GetFilms';
 
-export default function MoviesPage({handleInfo}) {
+export default function MoviesPage() {
     const [query, setQuery] = useState('');
     const [films, setFilms] = useState([]);
-    const [loading, setLoading] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -28,21 +26,15 @@ export default function MoviesPage({handleInfo}) {
             pathname: location.pathname,
             search: `query=${query}`
         });
-        setLoading(true);
         searchFilms(query)
             .then(response => {
                 setFilms(films => response.data.results);
             })
             .catch(error => error.message)
             .finally(() => {
-                setLoading(false);
                 setQuery('');
             });
     };
-
-    useEffect(() => {
-        handleInfo({ loading });
-    }, [loading, handleInfo]);
 
     return (
         <>
@@ -71,8 +63,4 @@ export default function MoviesPage({handleInfo}) {
             </ul>}
         </>
     )
-};
-
-MoviesPage.propTypes = {
-    handleInfo: PropTypes.func
 };

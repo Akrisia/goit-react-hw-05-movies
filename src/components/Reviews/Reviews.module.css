@@ -1,0 +1,18 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 3px solid #cac4c4;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.message {
+    padding: 20px;
+}

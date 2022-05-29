@@ -29,3 +29,27 @@
     margin-bottom: 20px;
     margin-left: 10px;
 }
+
+.addInfo {
+    composes: filmCard;
+    flex-direction: column;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover,
+.link:focus {
+    color: #7e7979;
+}

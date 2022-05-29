@@ -1,25 +1,17 @@
-import PropTypes from 'prop-types';
 import s from './HomePage.module.css';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPopularFilms } from 'services/GetFilms';
 
-export default function HomePage({handleInfo}) {
+export default function HomePage() {
     const [films, setFilms] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
         getPopularFilms().then(response => {
             setFilms(films => response.data.results);
-            })
-            .catch(error => error.message)
-            .finally(() => setLoading(false));
+        })
+            .catch(error => error.message);
     }, []);
-    
-    useEffect(() => {
-        handleInfo({ loading });
-    }, [loading, handleInfo]);
 
     return (
         <>
@@ -33,8 +25,4 @@ export default function HomePage({handleInfo}) {
             </ul>
         </>
     )
-};
-
-HomePage.propTypes = {
-    handleInfo: PropTypes.func
 };

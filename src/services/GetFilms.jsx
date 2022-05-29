@@ -14,3 +14,11 @@ export const searchFilms = (query) => {
 export const getFilmById = (filmId) => {
     return http.get(`${BASE_URL}/movie/${filmId}?api_key=${API_KEY}`);
 };
+
+export const getFilmCast = (filmId) => {
+    return http.get(`${BASE_URL}/movie/${filmId}/credits?api_key=${API_KEY}`);
+}
+
+export const getFilmReviews = (filmId) => {
+    return http.get(`${BASE_URL}/movie/${filmId}/reviews?api_key=${API_KEY}`);
+}

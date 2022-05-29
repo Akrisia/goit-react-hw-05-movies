@@ -1,30 +1,26 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { lazy, Suspense } from 'react';
 import Navigation from './Navigation';
 import Loader from './Loader';
-import HomePage from './HomePage';
-import MoviesPage from './MoviesPage';
-import MovieDetailsPage from './MovieDetailsPage';
-import NotFound from './NotFound';
+const HomePage = lazy(() => import('./HomePage'));
+const MoviesPage = lazy(() => import('./MoviesPage'));
+const MovieDetailsPage = lazy(() => import('./MovieDetailsPage'));
+const NotFound = lazy(() => import('./NotFound'));
 
 
 export function App() {
-  const [loading, setLoading] = useState(false);
-
-  const handleInfo = ({ loading }) => {
-    setLoading(loading);
-  };
 
   return (
     <div>
       <Navigation />
-      <Routes>
-        <Route path='/' element={<HomePage handleInfo={handleInfo} />}/>
-        <Route path='/movies' element={<MoviesPage handleInfo={handleInfo} />}/>
-        <Route path='/movies/:filmId' element={<MovieDetailsPage handleInfo={handleInfo} />}/>
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      {loading && <Loader />}
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path='/' element={<HomePage />}/>
+          <Route path='movies' element={<MoviesPage />}/>
+          <Route path='movies/:filmId/*' element={<MovieDetailsPage />}/>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };
