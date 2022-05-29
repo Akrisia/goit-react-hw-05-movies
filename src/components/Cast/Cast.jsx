@@ -1,20 +1,8 @@
-import PropTypes from 'prop-types';
 import s from './Cast.module.css';
-import { useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 export default function Cast() {
     const { filmId } = useParams();
-
-    // useEffect(() => {
-    //     setLoading(true);
-    //     getFilmById(filmId).then(response => {
-    //         setFilm(film => response.data);
-    //         console.log(response.data)
-    //     })
-    //         .catch(error => error.message)
-    //         .finally(() => setLoading(false));
-    // }, []);
 
     return (
         <div className={s.addInfo}>
