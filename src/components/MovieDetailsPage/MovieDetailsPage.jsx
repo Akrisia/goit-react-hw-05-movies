@@ -19,7 +19,7 @@ export default function MovieDetailsPage({ handleInfo }) {
         })
             .catch(error => error.message)
             .finally(() => setLoading(false));
-    }, []);
+    }, [filmId]);
 
     useEffect(() => {
         handleInfo({ loading });

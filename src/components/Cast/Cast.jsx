@@ -3,9 +3,7 @@ import s from './Cast.module.css';
 import { useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-export default function Cast({ handleInfo }) {
-    const [loading, setLoading] = useState(false);
-    const [film, setFilm] = useState();
+export default function Cast() {
     const { filmId } = useParams();
 
     // useEffect(() => {
@@ -17,10 +15,6 @@ export default function Cast({ handleInfo }) {
     //         .catch(error => error.message)
     //         .finally(() => setLoading(false));
     // }, []);
-
-    useEffect(() => {
-        handleInfo({ loading });
-    }, [loading, handleInfo]);
 
     return (
         <div className={s.addInfo}>
@@ -35,8 +29,4 @@ export default function Cast({ handleInfo }) {
             </ul>
         </div>
     )
-};
-
-Cast.propTypes = {
-    handleInfo: PropTypes.func
 };
