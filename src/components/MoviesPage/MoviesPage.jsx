@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { searchFilms } from 'services/GetFilms';
 
-export default function MoviesPage({handleFilms}) {
+export default function MoviesPage({handleInfo}) {
     const [query, setQuery] = useState('');
     const [films, setFilms] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -41,8 +41,8 @@ export default function MoviesPage({handleFilms}) {
     };
 
     useEffect(() => {
-        handleFilms({ loading });
-    }, [loading, handleFilms]);
+        handleInfo({ loading });
+    }, [loading, handleInfo]);
 
     return (
         <>
@@ -74,5 +74,5 @@ export default function MoviesPage({handleFilms}) {
 };
 
 MoviesPage.propTypes = {
-    handleFilms: PropTypes.func.isRequired
+    handleInfo: PropTypes.func
 };

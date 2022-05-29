@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPopularFilms } from 'services/GetFilms';
 
-export default function HomePage({handleFilms}) {
+export default function HomePage({handleInfo}) {
     const [films, setFilms] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -18,8 +18,8 @@ export default function HomePage({handleFilms}) {
     }, []);
     
     useEffect(() => {
-        handleFilms({ loading });
-    }, [loading, handleFilms]);
+        handleInfo({ loading });
+    }, [loading, handleInfo]);
 
     return (
         <>
@@ -36,5 +36,5 @@ export default function HomePage({handleFilms}) {
 };
 
 HomePage.propTypes = {
-    handleFilms: PropTypes.func.isRequired
+    handleInfo: PropTypes.func
 };

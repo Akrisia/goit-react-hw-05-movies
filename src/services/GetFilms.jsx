@@ -10,3 +10,7 @@ export const getPopularFilms = () => {
 export const searchFilms = (query) => {
     return http.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&include_adult=false`);
 };
+
+export const getFilmById = (filmId) => {
+    return http.get(`${BASE_URL}/movie/${filmId}?api_key=${API_KEY}`);
+};

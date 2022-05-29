@@ -1,0 +1,30 @@
+.addInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 3px solid #cac4c4;
+}
+
+.title {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover,
+.link:focus {
+    color: #7e7979;
+}
