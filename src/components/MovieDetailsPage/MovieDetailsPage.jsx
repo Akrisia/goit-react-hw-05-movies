@@ -19,11 +19,21 @@ export default function MovieDetailsPage() {
             .catch(error => error.message);
     }, [filmId]);
 
+    const state = {
+        data: location.state.data,
+        from: { path: location.pathname }
+    };
+
     return (
         <>
             {film &&
                 <>
-                <Link to={location?.state?.from?.location ?? '/'} className={s.button}>{location?.state?.from?.label ?? 'Go Back'}</Link>
+                    <Link
+                        to={location?.state?.from?.path ?? '/'}
+                        className={s.button}
+                        state={state}>
+                        Go Back
+                    </Link>
                     <div className={s.filmCard}>
                         <img src={`${filmImageBaseUrl}${film.poster_path}`} alt={film.original_title} className={s.image} />
                         <div className={s.filmInfo}>
@@ -42,21 +52,28 @@ export default function MovieDetailsPage() {
                         <h3 className={s.subtitle}>Additional Information</h3>
                         <ul className={s.list}>
                             <li className={s.item}>
-                                <Link to={`/movies/${filmId}/cast`} className={s.link}>Cast</Link>
+                            <Link
+                                to={`/movies/${filmId}/cast`}
+                                className={s.link}
+                                state={location.state}>Cast</Link>
                             </li>
                             <li className={s.item}>
-                                <Link to={`/movies/${filmId}/reviews`} className={s.link}>Reviews</Link>
+                            <Link
+                                to={`/movies/${filmId}/reviews`}
+                                className={s.link}
+                                state={location.state}>Reviews</Link>
                             </li>
                         </ul>
                     </div>
+
+                    <Suspense fallback={<Loader />}>
+                        <Routes>
+                            <Route path='cast' element={<Cast />} />
+                            <Route path='reviews' element={<Reviews />} />
+                        </Routes>
+                    </Suspense>
                 </>
             }
-            <Suspense fallback={<Loader />}>
-                <Routes>
-                    <Route path='cast' element={<Cast />} />
-                    <Route path='reviews' element={<Reviews />} />
-                </Routes>
-            </Suspense>
         </>
-    );
+    )
 };
